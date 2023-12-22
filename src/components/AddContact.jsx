@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const AddContact = ({ updateList, contacts }) => {
+const AddContact = ({ updateList, searchResult }) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -23,17 +23,13 @@ const AddContact = ({ updateList, contacts }) => {
     if (!name || !phone || !email) return null;
 
     const newContact = {
-      id: contacts.length + 1,
+      id: searchResult.length + 1,
       name,
       phone,
       email,
     };
 
-    console.log(contacts);
-
     updateList(newContact);
-
-    console.log(contacts);
 
     setName("");
     setPhone("");

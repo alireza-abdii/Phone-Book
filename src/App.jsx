@@ -34,12 +34,11 @@ const allContact = [
 const App = () => {
   const [contacts, setContacts] = useState(allContact);
 
-  const [searchTerm, setSearchTerm] = useState("");
-
   const [searchResult, setSearchResult] = useState(contacts);
 
   const handleAddContact = (newContact) => {
     setContacts((prevContacts) => [...prevContacts, newContact]);
+    setSearchResult((prevContacts) => [...prevContacts, newContact]);
   };
 
   return (
@@ -48,16 +47,9 @@ const App = () => {
         <h1 className="text-black font-bold font-sans text-4xl my-4 flex">
           Phone Book
         </h1>
-        <SearchBar
-          contacts={contacts}
-          setSearchResult={setSearchResult}
-          setSearchTerm={setSearchTerm}
-        />
-        <AddContact
-          updateList={handleAddContact}
-          contacts={searchResult ? searchResult : contacts}
-        />
-        <ContactList contacts={searchResult ? searchResult : contacts} />
+        <SearchBar searchResult={contacts} setSearchResult={setSearchResult} />
+        <AddContact updateList={handleAddContact} searchResult={searchResult} />
+        <ContactList searchResult={searchResult} />
       </div>
     </div>
   );

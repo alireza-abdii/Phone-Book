@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-const ContactList = ({ contacts }) => {
+const ContactList = ({ searchResult }) => {
   return (
     <div className="w-full h-[65%] flex flex-col items-center overflow-auto">
       <div className="w-[650px] flex justify-between items-center py-3 border-y-[2px] border-gray-400">
@@ -49,14 +49,7 @@ const ContactList = ({ contacts }) => {
       </div>
 
       <ul className="w-[650px]">
-        {/* <li className="flex justify-center items-center py-3 border-b-[1.5px] border-gray-400">
-          <p className="w-36 flex justify-center items-center">Tom Jackson</p>
-          <p className="w-36 flex justify-center items-center">555-444-333</p>
-          <p className="w-36 flex justify-center items-center">
-            tomjack@gmail.com
-          </p>
-        </li> */}
-        {contacts.map((person) => (
+        {searchResult.map((person) => (
           <li
             key={person.id}
             className="flex justify-between items-center py-3 border-b-[1.5px] border-gray-400"
